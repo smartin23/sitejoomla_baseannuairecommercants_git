@@ -1,24 +1,20 @@
 d:
-cd \wamp21e\www\sitejoomla_baseannuairecommercants\components
-rmdir com_sobipro
-MKLINK /D com_sobipro D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\components\com_sobipro
-pause
-cd \wamp21e\www\sitejoomla_baseannuairecommercants_git\components\com_sobipro
-rmdir etc
+cd \wamp21e\www\sitejoomla_baseannuairecommercants\components/com_sobipro
 MKLINK /D etc D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\etc
 pause
-rmdir lib
 MKLINK /D lib D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\lib
 pause
-rmdir opt
 MKLINK /D opt D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\opt
 pause
-rmdir var
 MKLINK /D var D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\var
 pause
-rmdir views
 MKLINK /D views D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\views
 pause
+MKLINK /D tmp D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\tmp
+pause
+MKLINK /D usr D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\components\com_sobipro\usr
+pause
+
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\modules
 rmdir mod_jmaps
 MKLINK /D mod_jmaps D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_jmaps
