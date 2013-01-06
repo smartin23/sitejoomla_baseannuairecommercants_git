@@ -49,7 +49,7 @@ $sitename = $app->getCfg('sitename');
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>/scripts/modernizr-min.js"></script>
 	<script src="<?php echo $this->baseurl ?>/scripts/jquery.easing.1.3.js"></script>
 	<script src="<?php echo $this->baseurl ?>/scripts/jquery.mobile.custom.min.js"></script>
 	  
@@ -310,8 +310,8 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
 </script>
 
 <script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery.ba-resize.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery.tabs+accordion.js"></script>
+<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery-ba-resize.js"></script>
+<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery-tabs-accordion.js"></script>
 <script type='text/javascript'>
 jQuery('.taa-accordion, .taa-tabs').TabsAccordion({
 		responsiveSwitch: 'taa-tablist'

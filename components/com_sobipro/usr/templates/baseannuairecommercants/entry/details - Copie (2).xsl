@@ -21,7 +21,7 @@
 <div style="float:left;"><xsl:call-template name="manage" /></div>
 <div style="float:right;"><xsl:call-template name="ratingStars"/></div>
 <div style="clear:both;"/>
-<h2 class="SPTitle"><xsl:value-of select="entry/name" /></h2>
+<h1 class="SPTitle"><xsl:value-of select="entry/name" /></h1>
 <div class="spField" id="title">
   <xsl:value-of select="entry/fields/field_title/data"/>
   <xsl:text> </xsl:text>
@@ -30,7 +30,7 @@
   
 <div class="taa-tabs minimal hide-title cross-fade">
 <section>
-  <h1><i class="icon-pushpin icon-large"></i> Description</h1>
+  <h2><i class="icon-pushpin icon-large"></i> Description</h2>
                               
           <div class="spField" id="resume_activite">
           <xsl:value-of select="entry/fields/field_resume_activite/data" disable-output-escaping="yes"/>
@@ -158,13 +158,11 @@
        
 </section>
 <section>
-  <h1> <i class="icon-info-sign icon-large"></i> Infos pratiques</h1>
+  <h2> <i class="icon-info-sign icon-large"></i> Infos pratiques</h2>
     
     <div class="SPDetailEntry-Sidebar">
           
-      <div class="SPDE-Print hidden-phone">
-      <a href="#" style="float:right;" onClick="window.print()"><i class="icon-print"></i> Imprimer cette fiche</a>
-      </div>
+      
           
       <address>
           <div class="SPDetailEntry-Sidebar-adresse">
@@ -261,7 +259,7 @@
       </div>
 </section>
 <section>
-  <h1><i class="icon-comments icon-large"></i> Commentaires</h1>
+  <h2><i class="icon-comments icon-large"></i> Commentaires</h2>
   <xsl:call-template name="ratingSummary"/>
     <xsl:call-template name="reviewForm"/>
     <div style="clear: both;"/><br/>
@@ -269,7 +267,7 @@
   
 </section>
 <section>
-  <h1><i class="icon-phone icon-large"></i> Contact</h1>
+  <h2><i class="icon-phone icon-large"></i> Contact</h2>
   <div id='contact'>
     <xsl:call-template name="contact">
             <xsl:with-param name="field" select="/entry_details/entry/fields/field_contact/data"/>

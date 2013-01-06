@@ -1,21 +1,26 @@
-function changeDetailsStackingOrder() {
 
-	//on déplace la carte, les categories et les news 
-	if (jQuery(window).width() < 767) {
-				
-		jQuery(".SPDE-Galery").insertAfter(jQuery("#activite_detaillee"));
-		jQuery(".SPTitle").insertBefore(".SPDetailEntry-Sidebar-adresse");
-		jQuery(".spField#title").insertAfter(".SPTitle");		
+function geolocalisation(){
+	var gc = new google.maps.Geocoder();
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (po) {
+			gc.geocode({"latLng":  new google.maps.LatLng(po.coords.latitude, po.coords.longitude) }, function(results, status) {
+				if(status == google.maps.GeocoderStatus.OK) {
+					jQuery("#mj_rs_ref_lat").val(po.coords.latitude) ;
+					jQuery("#mj_rs_ref_lng").val(po.coords.longitude) ;
+					jQuery("#mj_rs_center_selector").val();
+					jQuery("input#saddr").val(results[0]["formatted_address"]);
+					
+				} else {
+					jQuery("#saddr-msg").html('Erreur lors de la géolocalisation : '+ status);
+				}
+			});
+		});
+	}
+	else{
+		jQuery("#saddr-msg").html('Partage de position non autorisé.');
 	}
 }
-
-
-function setStartAddress(position) {
-  var infopos = position.coords.latitude +"," +position.coords.longitude;
-  jQuery("input#saddr").val(infopos);
-  jQuery("#saddr-msg").html('Votre position a été localisée');
-}
-
+/*
 function erreurPosition(error) {
     var info = "Erreur lors de la géolocalisation : ";
     switch(error.code) {
@@ -33,28 +38,19 @@ function erreurPosition(error) {
     break;
     }
 	jQuery("#saddr-msg").html(info);
-}
+}*/
 
-jQuery(document).ready(function() {
+function googlemapdirections () {
 
-	//Support swipe dans le défilé d'images dans la vue détail 
-	jQuery("#spdecarousel").swiperight(function() {  
-		jQuery("#spdecarousel").carousel('prev');  
-	});  
-	jQuery("#spdecarousel").swipeleft(function() {  
-		jQuery("#spdecarousel").carousel('next');  
-	});  
-});
- 
-jQuery(window).load(function(){ 
-
-	//changeDetailsStackingOrder();	
-		
-	//Map détails :  géolocalisation pour calcul de l'itinéraire
+	//Si le formulaire de directions est affiché par la map....
 	if (jQuery('form.mapdirform').length>0) {
 		
-		jQuery("input#saddr").after('<div class="small text-info" id="saddr-msg">Recherche de votre position...</div>');
-		if (navigator.geolocation) navigator.geolocation.getCurrentPosition(setStartAddress, erreurPosition);
+		//Ajout d'un champ de message
+		jQuery("input#saddr").after('<div class="small text-info" id="saddr-msg"></div>');
+		
+		//Localisation de l'utilisateur
+		geolocalisation();
+		//if (navigator.geolocation) navigator.geolocation.getCurrentPosition(setStartAddress, erreurPosition);
 		
 		//Afficher le detail de l'itinéraire
 		jQuery('form.mapdirform').find('.button').click(function() {
@@ -85,5 +81,4 @@ jQuery(window).load(function(){
 			});		
 		});	
 	}
-	
-});
+}

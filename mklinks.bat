@@ -26,6 +26,13 @@ pause
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\modules
 rmdir mod_sobipro_tree
 MKLINK /D mod_sobipro_tree D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_sobipro_tree
+
+pause
+cd \wamp21e\www\sitejoomla_baseannuairecommercants
+rmdir scripts
+MKLINK /D scripts D:\wamp21e\www\sitejoomla_baseannuaire_git\scripts
+
+
 pause
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\templates
 rmdir baseannuairecommercants

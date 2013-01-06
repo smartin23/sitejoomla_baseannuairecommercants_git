@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="https://xml.sigsiu.net/SobiPro/template.xsd">
-	<name>SobiPro Template pour Annuaire des commerçants </name>
-	<id>annuairegueret_template</id>
+	<name>SobiPro Template pour Base Annuaire des commerçants </name>
+	<id>baseannuairecommercants</id>
 	<authorName>Stephane Martin, Sigrid Suski and Radek Suski</authorName>
 	<authorEmail>contact[at]lagrangeweb.fr</authorEmail>
 	<authorUrl>http://www.lagrangeweb.fr</authorUrl>
@@ -11,7 +11,7 @@
 	<creationDate>2013-01-01</creationDate>
 	<version>1.0</version>
 	<description>
-		SobiPro Template pour l'Annuaire des commerçants et artisans de Guéret
+		SobiPro Template pour la Base Annuaire des commerçants
 	</description>
 	<files>
 		<file path="category/view.xsl">
