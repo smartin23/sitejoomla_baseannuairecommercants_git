@@ -27,6 +27,10 @@ cd \wamp21e\www\sitejoomla_baseannuairecommercants\modules
 rmdir mod_sobipro_tree
 MKLINK /D mod_sobipro_tree D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_sobipro_tree
 
+cd \wamp21e\www\sitejoomla_baseannuairecommercants\plugins\system
+MKLINK /D plugin_googlemap2 D:\wamp21e\www\sitejoomla_baseannuaire_git\plugins\system\plugin_googlemap2
+pause
+
 pause
 cd \wamp21e\www\sitejoomla_baseannuairecommercants
 rmdir scripts

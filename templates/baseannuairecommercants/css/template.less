@@ -126,16 +126,21 @@ a.accordion-toggle {font-size:1.3em!important;font-family:@fontFamily2;}
 .advertising {position:relative;overflow:hidden;}
 
 //Login (module)
-#login-form ul li+li+li
-//#login-form #form-login-remember
-{display:none;}
+#login-form ul li+li+li {display:none;}
+#login-form #form-login-remember input {float:left;}
+#login-form #form-login-remember label {display:inline; margin-left:1%;}
+#login-form .login-greeting {margin-bottom:5px;}
 
 //Login (page - apres bad login) : on ne garde que le message d'erreur
 .login, .login + div {display:none;}
 
-//Profile
+//Profile Affichage
+.profile #users-profile-core {}
+.profile #users-profile-sobipro {margin-top:20px;}
+.profile #users-profile-sobipro div#sobipro-entries {margin-bottom:20px;}
+
+//Profile Edition
 .profile-edit legend {color:@textColor!important;border:none!important; font-size:1em!important;}
-.profile-edit fieldset+fieldset {display:none;}
 
 //Enregistrement
 .registration legend {color:@textColor!important;border:none!important; font-size:1em!important;}

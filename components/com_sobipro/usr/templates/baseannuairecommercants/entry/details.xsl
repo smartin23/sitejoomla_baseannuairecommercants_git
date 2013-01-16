@@ -30,7 +30,7 @@
   
 <div class="taa-tabs minimal hide-title cross-fade">
 <section>
-  <h1><i class="icon-pushpin icon-large"></i> Description</h1>
+  <h2><i class="icon-pushpin icon-large"></i> Description</h2>
                               
           <div class="spField" id="resume_activite">
           <xsl:value-of select="entry/fields/field_resume_activite/data" disable-output-escaping="yes"/>
@@ -158,7 +158,7 @@
        
 </section>
 <section>
-				<h1> <i class="icon-info-sign icon-large"></i> Infos pratiques</h1>  
+				<h2> <i class="icon-info-sign icon-large"></i> Infos pratiques</h2>  
 		
 				<div class="SPDetailEntry-Sidebar">
 	  
@@ -276,7 +276,7 @@
 				</div>
 </section>
 <section>
-  <h1><i class="icon-comments icon-large"></i> Commentaires</h1>
+  <h2><i class="icon-comments icon-large"></i> Commentaires</h2>
   <xsl:call-template name="ratingSummary"/>
     <xsl:call-template name="reviewForm"/>
     <div style="clear: both;"/><br/>
@@ -284,7 +284,7 @@
   
 </section>
 <section>
-  <h1><i class="icon-phone icon-large"></i> Contact</h1>
+  <h2><i class="icon-phone icon-large"></i> Contact</h2>
   <div id='contact'>
     <xsl:call-template name="contact">
             <xsl:with-param name="field" select="/entry_details/entry/fields/field_contact/data"/>

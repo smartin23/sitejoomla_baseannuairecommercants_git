@@ -65,6 +65,11 @@
 .SPDE-Map #saddr {margin-bottom:0px!important;}
 .SPDE-Map .directions {display:none;}
 .SPDE-Map .directions-show {visibility:hidden; cursor:pointer;text-align:center;margin-top:15px;}
+.SPDE-Map span.dirflg-driven input,
+.SPDE-Map span.dirflg-bicycle input,
+.SPDE-Map span.dirflg-walking input,
+.SPDE-Map span.dirflg-nohighways input {margin-right:1%; margin-left:1%;}
+.SPDE-Map input.button {margin-top:15px!important;}
 
 //Commentaires
 #sprrMsg {background-color:none!important;}
@@ -203,4 +208,16 @@
 }
 .minimal.taa-tabs > ul > li + li {
   border-left: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+.SPDE-Map span.dirflg-driven ,
+.SPDE-Map span.dirflg-bicycle ,
+.SPDE-Map span.dirflg-walking ,
+.SPDE-Map span.dirflg-nohighways {display:block;}
+}
+
+@media screen and (max-width: 360px){
+.SPDetailEntry-Sidebar-contact {width:100%;margin-bottom:5px;}
+.SPDetailEntry-Sidebar-infos {clear:both; width:100%;}
 }
