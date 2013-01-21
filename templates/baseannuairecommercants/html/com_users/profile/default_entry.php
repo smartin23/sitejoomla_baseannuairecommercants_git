@@ -66,6 +66,6 @@ if ($nbrows > 0) :?>
 	<?php endif;?>	
 	</div>
 	
-	<!--<p><a href="index.php?option=com_sobipro&task=entry.add&sid=54"><button class="btn"><php echo JText::_('COM_USERS_SOBIPRO_NEW_ENTRY');?></button></a></p>-->
+	<p style="display:none;"><a href="index.php?option=com_sobipro&task=entry.add&sid=55"><button class="btn"><?php echo JText::_('COM_USERS_SOBIPRO_NEW_ENTRY');?></button></a></p>
 	
 </fieldset>

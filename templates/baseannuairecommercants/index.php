@@ -345,6 +345,24 @@ function SPCSendMessage( form )
 </script>
 
 <script type="text/javascript">
+
+jQuery.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return jQuery.getUrlVars()[name];
+  }
+});
+
 function changeStackingOrder() {
 
 	//on déplace les categories et les news (les cartes ne peuvent pas etre déplacées)
@@ -404,6 +422,7 @@ jQuery(window).load(function(){
 		//Ajout des tags Bootstrap (hors des templates et views modifiables)
 		addBootstrapTags();
 		
+		
 		//Les news rss + news defile : affichés qu'en page d'acceuil
 		if (jQuery('.task-section-view').length >0) {
 			jQuery('.calendar').show();
@@ -420,6 +439,14 @@ jQuery(window).load(function(){
 		$catgroup.find('a.accordion-toggle').removeClass('collapsed');
 		$catgroup.find('.accordion-body').addClass('in');	
 		
+		//Page Recherche : on active le mode Critere + si necessaire
+		var searchsource = jQuery.getUrlVar('searchsource');
+		if (searchsource=='plus') {
+			if (jQuery('.button#SPExOptBt').length>0) {
+				jQuery('#SPExtSearch').show();
+			}
+		}
+		
 		//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
 		jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
 		
@@ -429,6 +456,12 @@ jQuery(window).load(function(){
 		jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn btn-primary");
 		//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
 		//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
+		
+		//Affichage de la description du champ sous le champs de saisie
+		var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
+			title=jQuery(this).find('a').attr('title');
+			if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
+		});
 		
 });
 
