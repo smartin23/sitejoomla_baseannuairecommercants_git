@@ -70,6 +70,8 @@ ul {list-style-type: none; margin:0!important;}
 
 //Google maps
 #Jmaps img, #field_jmapsmarker img {max-width:none!important;}
+#Jmaps .markerHTMLdiv {font-weight:normal!important;font-size:0.9em!important;line-height:1.5em;}
+#Jmaps .markerHTMLdiv img {margin-right:2%;}
 
 // Défilés News caché par défaut
 .news {display:none;}
@@ -77,7 +79,7 @@ ul {list-style-type: none; margin:0!important;}
 //Pas de champs de recherche etendue dans le module de recherche étendue...
 .title-bloc {font-size:2.5em;line-height:100%;margin-top:10px;margin-bottom:20px;text-align:center;}
 
-.spextsearchmodule h3 {display:none;}
+.spextsearchmodule h3 {display:none;} 
 .search-bloc, .search2-bloc {width:320px; margin:auto;text-align:center;}
 .search-bloc form {margin-bottom:0px;}
 .search-bloc .extended-searck-link {clear:both;padding-left:3%;}
@@ -122,6 +124,7 @@ a.accordion-toggle {font-size:1.3em!important;font-family:@fontFamily2;}
 #agendacarousel .carousel-inner {height:auto;min-height:100px;}
 #agendacarousel .carousel-inner a {color:@textColor!important;font-weight:bold;}
 
+
 //Advertising
 .advertising {position:relative;overflow:hidden;}
 
@@ -153,6 +156,7 @@ a.accordion-toggle {font-size:1.3em!important;font-family:@fontFamily2;}
 
 //Bootstrap carousel
 .carousel-control {display:none; background:none!important; border:none!important; color:@textColor ;opacity:1;font-size:2em;}
+.carousel-inner img {width:100%;}
 
 //Modules : général
 .module.left, .module.right, .newsblock, .adsblock, .liensblock {margin-bottom:20px;}
@@ -203,7 +207,7 @@ footer .color4 {background-color:@color4;float:left;width:25%;height:15px;}
 
 //Menu principal
 .navbar {margin-top:-25px;margin-bottom:0px!important;}
-.navbar .brand  {margin-top:40px;}
+.navbar .brand  {font-size:1em;margin:0; margin-top:40px;padding:0;text-align:center;}
 .navbar a.rechercher {display:none;}
 
 .navbar .dropdown-menu {
@@ -334,56 +338,49 @@ form#spEntryForm .controls {margin-left:0!important;}
 
 
 //Media Queries
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 1024px) {
 
-	//Le bouton Recherche passe sous le champs de saisie
-	//.search-bloc .XTSPSearchCell1 , .search-bloc .XTSPSearchCell2 {float:none;}
+	//Adaptation des polices de titres h1 et h2
+	h1 {font-size:2em;line-height:1em;}
+	h2 {font-size:1.5em;line-height:1em;}
+	
+	//Afichage des entrées en liste sur une seule colonne pleine
+	.spEntriesListContainer .spEntriesListCell {clear:both;width:auto!important;}
 }
 
-@media screen and (max-width: 360px) {
 
-	//Brand et copyright
-	.brand, .copyright{font-size:1em!important;}
-}
+@media screen and (max-width: 980px) {
 
-@media screen and (max-width: 600px) {
+	.brand {width:75%;}
 
-	//On ajoute un padding de bord (?)
-	[class*="span"], .uneditable-input[class*="span"], .row-fluid [class*="span"] {
-		padding-left:1%;
-		padding-right:1%;
+	//On supprime la déco menu et on réarrange le menu
+	.topborder, .introduction-illustration {display:none!important;}
+	.introduction-titre {width:100%!important;margin-top:20px;}
+	
+	.navbar {margin-top:0px;}
+	.navbar .brand  {margin-top:10px;}
+	.nav-pills > li + li > a {
+		background-color: rgba(156,156,156,0.8);
+		border-radius: 7px 7px 7px 7px!important;
+		color: #454545;
+		padding: 15px 20px !important;
 	}
 	
-	//On laisse un grip a droite de la map search et category pour eviter le scroll of death...
-	.mapgrip {		background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
-	}	
-	.map1, .map2 {width:95%;}
+	//On bascule de force avant 360px le formulaire de contact et le formulaire d'edit d'entrées
+	/*.contact-form label, form#spEntryForm label 
+   {
+			float: none!important;
+			padding-top: 0!important;
+			text-align: left!important;
+			width: auto!important;
+	}*/
+	
+	/*.contact-form .controls,*/
+	form#spEntryForm .controls {margin-left:0!important;}
 }
 
-@media screen and (max-width: 800px) {
-
-	//Il faut revoir la police des titres des sidebars
-	h3 {font-size:1.4em!important;}
-	
-	//Formulaire de recherche (les champs d'entrée passent sous le label)
-	.SPSearch .SPSearchField {clear:both;}
-}
-
-@media screen and (min-width: 360px) and (max-width: 600px) {
-
-	//Blocs défilé pubs, actus et promos 
-	.advertising .adsblock {float:left; width:48%!important;padding-left:1%; padding-right:1%;}
-	
-	.news .newsblock {float:left; width:50%!important;}
-	.liens .liensblock {float:left; width:50%!important;}
-	
-	//Blocs footer
-	footer .menusecondaire, footer .social, footer .newsletter {
-		float:left!important; width:33.33333333%!important;
-	}
-	footer #shareme .share {font-size:1em;}
-	footer #shareme .count {font-size:1.5em;}
-
+@media screen and (min-width: 980px) and (max-width: 1280px) {
+	.brand {width:40%;}
 }
 
 @media only screen and (max-width: 768px),
@@ -443,46 +440,53 @@ form#spEntryForm .controls {margin-left:0!important;}
     .contact-category table.category td:nth-of-type(4):before { content: "Fax"; }		
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 800px) {
 
-	.brand {width:75%;}
-
-	//On supprime la déco menu et on réarrange le menu
-	.topborder, .introduction-illustration {display:none!important;}
-	.introduction-titre {width:100%!important;margin-top:20px;}
+	//Il faut revoir la police des titres des sidebars
+	h3 {font-size:1.4em!important;}
 	
-	.navbar {margin-top:0px;}
-	.navbar .brand  {margin-top:0px;}
-	.nav-pills > li + li > a {
-		background-color: rgba(156,156,156,0.8);
-		border-radius: 7px 7px 7px 7px!important;
-		color: #454545;
-		padding: 15px 20px !important;
+	//Formulaire de recherche (les champs d'entrée passent sous le label)
+	.SPSearch .SPSearchField {clear:both;}
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+	//On ajoute un padding de bord (?)
+	[class*="span"], .uneditable-input[class*="span"], .row-fluid [class*="span"] {
+		padding-left:1%;
+		padding-right:1%;
 	}
 	
-	//On bascule de force avant 360px le formulaire de contact et le formulaire d'edit d'entrées
-	/*.contact-form label, form#spEntryForm label 
-   {
-			float: none!important;
-			padding-top: 0!important;
-			text-align: left!important;
-			width: auto!important;
-	}*/
-	
-	/*.contact-form .controls,*/
-	form#spEntryForm .controls {margin-left:0!important;}
+	//On laisse un grip a droite de la map search et category pour eviter le scroll of death...
+	.mapgrip {		background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
+	}	
+	.map1, .map2 {width:95%;}
 }
 
-@media screen and (min-width: 980px) and (max-width: 1280px) {
-	.brand {width:40%;}
+
+@media screen and (min-width: 360px) and (max-width: 600px) {
+
+	//Blocs défilé pubs, actus et promos 
+	.advertising .adsblock {float:left; width:48%!important;padding-left:1%; padding-right:1%;}
+	
+	.news .newsblock {float:left; width:50%!important;}
+	.liens .liensblock {float:left; width:50%!important;}
+	
+	//Blocs footer
+	footer .menusecondaire, footer .social, footer .newsletter {
+		float:left!important; width:33.33333333%!important;
+	}
+	footer #shareme .share {font-size:1em;}
+	footer #shareme .count {font-size:1.5em;}
+
 }
+
   
-@media screen and (max-width: 1024px) {
 
-	//Adaptation des polices de titres h1 et h2
-	h1 {font-size:2em;line-height:1em;}
-	h2 {font-size:1.5em;line-height:1em;}
-	
-	//Afichage des entrées en liste sur une seule colonne pleine
-	.spEntriesListContainer .spEntriesListCell {clear:both;width:auto!important;}
+@media screen and (max-width: 360px) {
+
+	//Brand et copyright
+	.brand, .copyright{font-size:1em!important;}
 }

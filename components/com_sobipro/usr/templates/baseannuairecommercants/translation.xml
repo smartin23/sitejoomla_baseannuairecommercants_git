@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translation>
+   <term value="Fields with are mandatory">
+    <value lang="fr-FR">* = Champ obligatoire</value>
+  </term> 
   <term value="Add an entry">
     <value lang="fr-FR">Ajouter une entrée</value>
   </term> 

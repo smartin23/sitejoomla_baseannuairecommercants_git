@@ -38,16 +38,18 @@
           <xsl:value-of select="entry/fields/field_resume_activite/@suffix"/>
           </div>
       
-      <div class="SPDE-Logo hidden-phone">
-            <xsl:element name="img">
-              <xsl:attribute name="src">
-              <xsl:value-of select="entry/fields/field_logo/data/@image" />
-              </xsl:attribute>
-              <xsl:attribute name="alt">
-              <xsl:value-of select="entry/name" />
-              </xsl:attribute>
-            </xsl:element>
-          </div>
+		  <xsl:if test="string-length(entry/fields/field_logo/data/@image) &gt; 0">
+			  <div class="SPDE-Logo hidden-phone">
+					<xsl:element name="img">
+					  <xsl:attribute name="src">
+					  <xsl:value-of select="entry/fields/field_logo/data/@image" />
+					  </xsl:attribute>
+					  <xsl:attribute name="alt">
+					  <xsl:value-of select="entry/name" />
+					  </xsl:attribute>
+					</xsl:element>
+			  </div>
+		  </xsl!:if>
       
           <div class="spField" id="activite_detaillee">
           <xsl:value-of select="entry/fields/field_activite_detaillee/data" disable-output-escaping="yes"/>
@@ -190,14 +192,19 @@
 						</div>
 						
 						<div class="SPDetailEntry-Sidebar-telephone">
-							<xsl:if test="string-length(entry/fields/field_phone/data) &gt; 0">          
-								
-								<div itemprop="telephone" class="spField">
-									<strong><xsl:value-of select="entry/fields/field_phone/label" />: </strong>
+							<xsl:if test="string-length(entry/fields/field_phone/data) &gt; 0">     
+								<strong><xsl:value-of select="entry/fields/field_phone/label" />: </strong>
+								<xsl:choose>
+								  <xsl:when test="string-length(entry/fields/field_phone/data) = 10">
+									<xsl:value-of select="substring(entry/fields/field_phone/data,1,2)"/><xsl:text> </xsl:text><xsl:value-of  select="substring(entry/fields/field_phone/data,3,2)"/><xsl:text> </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,5,2)"/><xsl:text> </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,7,2)"/><xsl:text> </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,9,2)"/>
+								  </xsl:when>
+								  <xsl:otherwise>
 									<xsl:value-of select="entry/fields/field_phone/data"/>
-									<xsl:text> </xsl:text>
-									<xsl:value-of select="entry/fields/field_phone/@suffix"/>
-								</div>
+								  </xsl:otherwise>
+								</xsl:choose>
+							
+								
+								
 							</xsl:if>
 							<xsl:if test="string-length(entry/fields/field_fax/data) &gt; 0">
 								

@@ -407,8 +407,10 @@ function addBootstrapTags() {
 
 	//Ajout du style btn sur les boutons
 	jQuery('input.button').addClass('btn');
+	jQuery("input[type='submit']").addClass('btn');
 	jQuery('button').addClass('btn');
 	
+	//On reaffiche les boutons de pagination du carousel s'il n'est pas vide
 	if  (jQuery('.carousel-inner').children('div').length>1) {
 		jQuery('.carousel-control').show();
 	}
@@ -452,8 +454,11 @@ jQuery(window).load(function(){
 		
 		//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
 		jQuery("#spEntryForm").addClass("form-horizontal");
-		jQuery("#spEntryForm").find(".spFormRowFooter button").addClass("btn");
-		jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn btn-primary");
+		jQuery("#spEntryForm").find(".required").parent().parent().children("label").after("*");
+		//Hack pour required manquant..
+		jQuery("#spEntryForm").find("#field_activite_detailleeContainer").find(".control-group").children("label").after("*");
+		//jQuery("#spEntryForm").find(".spFormRowFooter button").addClass("btn");
+		//jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn btn-primary");
 		//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
 		//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
 		

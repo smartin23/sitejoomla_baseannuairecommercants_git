@@ -30,30 +30,31 @@ div.spFormRowOdd {
 div.spFormRowEven {
 	/*background-color: #EEEEEE;*/
 }
-
-/*form#spEntryForm .required {
-	border: 1px solid red
-}*/
+#spEntryForm .isRequired {font-size:0.75em;margin-bottom:15px;}
+#spEntryForm .hasCustomLegend {font-size:0.75em; margin-top:3px;width:90%;}
 
 form#spEntryForm label {font-weight:bold; display:inline;}
+
+form#spEntryForm .controls label {font-weight:normal;}
 
 #spEntryForm input[type=checkbox],
 #spEntryForm input[type=radio]  {
 	border-style:none!important;
 }
 
-div.SPtagsinput input{
-	width:auto!important;
-	border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-}
-
 select#field_site_internet_protocol, select#field_facebook_protocol, select#field_twitter_protocol,select#field_googleplus_protocol {
 	width:auto;
 }
 
-input#field_jmapsmarker_jmlatitude, input#field_jmapsmarker_jmlongitude {
-	width:auto;
+div.SPJmapsmarkerLatitude {float:left; width:50%;}
+div.SPJmapsmarkerLongitude {float:right;width:50%;}
+
+#field_jmapsmarker_canvas {margin-bottom:15px;}
+
+div.SPtagsinput input{
+	width:auto!important;
+	border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
 
 #editor-xtd-buttons {display:none;}
@@ -156,4 +157,12 @@ button#SPSaveCats {
 #osx-container h2 {margin:10px 0 6px;}
 #osx-container p {margin-bottom:10px;}
 #osx-container span {color:#777;}
+
+/*Media queries*/
+@media screen and (max-width: 767px) {
+
+div.SPJmapsmarkerLatitude {float:left;width:100%;}
+div.SPJmapsmarkerLongitude {clear:both;margin-top:10px;width:100%;}
+
+}
 

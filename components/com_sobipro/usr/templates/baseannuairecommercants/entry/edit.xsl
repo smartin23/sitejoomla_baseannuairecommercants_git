@@ -20,7 +20,8 @@
         </div>
       </div>
       <div class="spFormRowOdd" >
-	   <h3><i class="icon-pencil icon-large"></i><xsl:text>&nbsp;</xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Add an entry' )"  /></h3>
+	   <h3><i class="icon-pencil icon-large"></i> <xsl:value-of select="php:function( 'SobiPro::Txt' , 'Add an entry' )"  /></h3>
+	   <div class="isRequired"><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Fields with are mandatory' )" /></div>
       <div class="control-group">
         <label class="control-label" for="entry.parent">
         <xsl:value-of select="php:function( 'SobiPro::Txt' , 'TP.CAT_BOX' )" />
@@ -105,7 +106,6 @@
       </div>
       <div class="spFormRowFooter">
         <div>
-          <xsl:copy-of select="entry/fields/cancel_button/data/*" />
           <xsl:copy-of select="entry/fields/save_button/data/*" />
         </div>
       </div>
