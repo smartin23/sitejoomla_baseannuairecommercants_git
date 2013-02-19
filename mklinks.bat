@@ -1,4 +1,9 @@
 d:
+
+cd \wamp21e\www\sitejoomla_baseannuairecommercants
+MKLINK /D min D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\min
+pause
+
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\components/com_sobipro
 MKLINK /D etc D:\wamp21e\www\sitejoomla_baseannuaire_git\components\com_sobipro\etc
 pause
@@ -17,7 +22,7 @@ pause
 
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\modules
 rmdir mod_jmaps
-MKLINK /D mod_jmaps D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_jmaps
+MKLINK /D mod_jmaps D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\modules\mod_jmaps
 pause
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\modules
 rmdir mod_sobiextsearch 

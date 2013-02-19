@@ -15,6 +15,10 @@
         <xsl:apply-templates select="alphaMenu" />
       </div>
     <div style="clear:both;"/>
+	
+	<!--Recherche Autour de...-->
+			<xsl:value-of select="mjradius" disable-output-escaping="yes" />
+	
     <div id="SPSearchForm">
       <!-- define variable to check if there are more than 3 fields -->
       <xsl:variable name="fieldsCount">

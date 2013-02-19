@@ -25,34 +25,28 @@ $sitename = $app->getCfg('sitename');
  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/less/bootstrap.css" type="text/css" media="screen" />
-	
+   	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/min?g=generalcss">
+			
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.css" type="text/css" media="screen" />
-
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/admin.css" />
-
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/print.css" />
-	
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/tabsandaccordion/css/tabs+accordion/tabs+accordion.css" />
-	
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />
-   
+	<link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		   
 	<!-- Le touch icons -->
 	<link rel="apple-touch-icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon-114x114.png">
+	
+	<script src="<?php echo $this->baseurl ?>/min/g=basejs"></script>	  
+	<script type='text/javascript'>
+		jQuery.noConflict();
+	</script>
 
 	<jdoc:include type="head" />
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-
-	<script src="<?php echo $this->baseurl ?>/scripts/modernizr-min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/scripts/jquery.easing.1.3.js"></script>
-	<script src="<?php echo $this->baseurl ?>/scripts/jquery.mobile.custom.min.js"></script>
-	  
+ 
 </head>
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
@@ -66,10 +60,17 @@ $sitename = $app->getCfg('sitename');
 					<div class="container">
 								
 						<a class="brand" href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename'); ?></a>							
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+						<a class="custombtn" data-toggle="collapse" data-target=".nav-collapse">
+						
+							<span id="bar1" class="custombar"></span>
+							<span id="bar2" class="custombar"></span>
+							<span id="bar3" class="custombar"></span>
+							<span id="bar4" class="custombar">
+								
+								<span class="first icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>	
+							</span>
 						</a>
 
 						<div class="nav-collapse collapse pull-right">
@@ -79,7 +80,6 @@ $sitename = $app->getCfg('sitename');
 					</div>
 				  
 				</div>
-
 			</div>	
 			
 			<div class="introduction row-fluid">
@@ -116,7 +116,7 @@ $sitename = $app->getCfg('sitename');
 				
 		<div class="centre row-fluid">
 	
-				<div class="span3 pull-left">	
+				<div id="col1" class="span3 pull-left">	
 					<?php if ($task=='category.view') { ?>
 						<div class="mapgrip">
 							<jdoc:include type="modules" name="map1" style="standard" />
@@ -133,11 +133,16 @@ $sitename = $app->getCfg('sitename');
 					</div>
 				</div>
 			
-				<div class="span6 middle">
+				<div id="col2" class="span6 middle">
 					<jdoc:include type="modules" name="breadcrumbs" />
 					
 					<div class="contenu" style="overflow:hidden; position:relative;"><jdoc:include type="component" /></div>
-					
+				
+					<div class="publicites2 row-fluid">			
+						<div class="span6"><jdoc:include type="modules" name="advertising1"  /></div>
+						<div class="span6"><jdoc:include type="modules" name="advertising2"  /></div>
+					</div>
+								
 					<div class="news row-fluid">
 
 							<?php $counter=0; 
@@ -180,18 +185,19 @@ $sitename = $app->getCfg('sitename');
 					<jdoc:include type="message" />
 					
 				</div>
-				
-				<div class="span3 pull-right">
-					<div class="advertising">
-						<jdoc:include type="modules" name="advertising" style="standard"/>
+								
+				<div id="col3" class="span3 pull-right">
+					
+					<div class="publicites">
+						<jdoc:include type="modules" name="advertising1" style="standard"/>
+						<jdoc:include type="modules" name="advertising2" style="standard"/>					
 					</div>
 					
 					<div class="sidebar2">
 						<jdoc:include type="modules" name="right" style="standard"/>
 					</div>
 
-				</div>
-		
+				</div>	
 		</div>
 
 </div>
@@ -235,54 +241,67 @@ $sitename = $app->getCfg('sitename');
 	</div>
 </footer>
 
-<script src="<?php echo $this->baseurl ?>/scripts/sharrre/jquery.sharrre.min.js"></script>
+<!--[if lt IE 9]>
+  <script src="/min/g=ielte9js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+  <script src="/min/g=ielte8js"></script>
+<![endif]-->
+
 <script type='text/javascript'>
-jQuery('#shareme').sharrre({
-share: {
-googlePlus: true,
-facebook: true,
-twitter: true
-},
-enableTracking: true,
-buttons: {
-googlePlus: {size: 'tall'},
-facebook: {layout: 'box_count'},
-twitter: {count: 'vertical'}
-},
-hover: function(api, options){
-jQuery(api.element).find('.buttons').show();
-},
-hide: function(api, options){
-jQuery(api.element).find('.buttons').hide();
-}
-});
+	Modernizr.load([
+	{
+		test:Modernizr.touch,
+		yep:"/min/g=mobilejs",
+		callback: {
+		"/min/g=mobilejs" : function() {
+			//Support Swipe pour le carousel photos
+			jQuery('.carousel').each(function () {
+				
+				jQuery(this).swiperight(function() {  
+					jQuery(this).carousel('prev');			
+				}); 
+				
+				jQuery(this).swipeleft(function() {  
+					jQuery(this).carousel('next');  
+				}); 
+		
+			});
+		}
+		}
+	}
+	]);
 </script>
 
-<!--<script src="<php echo $this->baseurl ?>/templates/<php echo $this->template; ?>/bootstrap/js/bootstrap.min.js"></script>-->
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-button.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-collapse.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-dropdown.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-transition.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-carousel.js"></script>
+<!--<script src="?php echo $this->baseurl ?>/scripts/jquery.defer.js"></script>
 <script type='text/javascript'>
+jQuery.deferSettings.delayDomReady = true;
+jQuery.defer( "/scripts/jquery.tinyscrollbar.min.js" )
+    .done( function () {
+		jQuery('#SPExtSearch').tinyscrollbar();
+	});
+</script>-->
 
+<script src="<?php echo $this->baseurl ?>/min/g=generaljs"></script>
+<script type='text/javascript'>
+	jQuery.noConflict();
+	
+	//Carousel photos (description)
 	jQuery('.carousel').carousel({  
-	  interval: 5000 // in milliseconds  
-	})  
+	  interval: 8000 // autoplay à 8s
+	});
 
-	if (jQuery('.carousel')) {
-		//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
-		window.addEvent('domready', function(){
-			if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
+	//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
+	window.addEvent('domready', function(){
+		if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 
-			Element.implement({
-			slide: function(how, mode){
-			return this;
-			}
-			});
-			}
+		Element.implement({
+		slide: function(how, mode){
+		return this;
+		}
 		});
-	}
+		}
+	});
 
 </script>
 
@@ -307,15 +326,6 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
     };
     
     //jQuery.noConflict();
-</script>
-
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery-ba-resize.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery-tabs-accordion.js"></script>
-<script type='text/javascript'>
-jQuery('.taa-accordion, .taa-tabs').TabsAccordion({
-		responsiveSwitch: 'taa-tablist'
-	});
 </script>
 
 <script type='text/javascript'>
@@ -345,7 +355,6 @@ function SPCSendMessage( form )
 </script>
 
 <script type="text/javascript">
-
 jQuery.extend({
   getUrlVars: function(){
     var vars = [], hash;
@@ -362,6 +371,24 @@ jQuery.extend({
     return jQuery.getUrlVars()[name];
   }
 });
+
+function changeColumns() {
+
+	if (jQuery(window).width() < 980){
+		//On se separe de la colonne de gauche
+		jQuery("#col2").removeClass("span6").addClass("span9");
+		jQuery("#col3").removeClass("span3").hide();
+		//Les publicites passent en dessous
+		jQuery(".publicites2").show();
+	}
+	else
+	{
+		jQuery("#col2").removeClass("span9").addClass("span6");
+		jQuery("#col3").addClass("span3").show();
+		jQuery(".publicites2").hide();
+	}
+	
+}
 
 function changeStackingOrder() {
 
@@ -417,14 +444,16 @@ function addBootstrapTags() {
 }
 
 jQuery(window).load(function(){ 
+
+		//Change la structure des colonnes selon la resolution
+		changeColumns();
 	
 		//Réorganisation de l'ordre des blocs selon la résolution		
 		changeStackingOrder();
 		
 		//Ajout des tags Bootstrap (hors des templates et views modifiables)
 		addBootstrapTags();
-		
-		
+			
 		//Les news rss + news defile : affichés qu'en page d'acceuil
 		if (jQuery('.task-section-view').length >0) {
 			jQuery('.calendar').show();
@@ -468,6 +497,26 @@ jQuery(window).load(function(){
 			if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
 		});
 		
+		//Bottom social share
+		jQuery('#shareme').sharrre({
+		share: {
+		googlePlus: true,
+		facebook: true,
+		twitter: true
+		},
+		enableTracking: true,
+		buttons: {
+		googlePlus: {size: 'tall'},
+		facebook: {layout: 'box_count'},
+		twitter: {count: 'vertical'}
+		},
+		hover: function(api, options){
+		jQuery(api.element).find('.buttons').show();
+		},
+		hide: function(api, options){
+		jQuery(api.element).find('.buttons').hide();
+		}
+		});		
 });
 
 jQuery(window).resize(function () {
@@ -476,6 +525,8 @@ jQuery(window).resize(function () {
 	//jQuery("body").css("padding-top", jQuery(".header").height());
 
 	changeStackingOrder();
+	
+	changeColumns();
 	
 });
 </script>
