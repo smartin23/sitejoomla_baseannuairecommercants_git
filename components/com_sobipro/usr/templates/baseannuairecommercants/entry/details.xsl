@@ -191,10 +191,10 @@
 							
 							<div class="SPDetailEntry-Sidebar-telephone">
 								<xsl:if test="string-length(entry/fields/field_phone/data) &gt; 0">     
-									<strong><xsl:value-of select="entry/fields/field_phone/label" />: </strong>
+									<i class="icon-phone"></i> 
 									<xsl:choose>
 									  <xsl:when test="string-length(entry/fields/field_phone/data) = 10">
-										<xsl:value-of select="substring(entry/fields/field_phone/data,1,2)"/><xsl:text> </xsl:text><xsl:value-of  select="substring(entry/fields/field_phone/data,3,2)"/><xsl:text> </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,5,2)"/><xsl:text> </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,7,2)"/><xsl:text> </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,9,2)"/>
+										<xsl:value-of select="substring(entry/fields/field_phone/data,1,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,3,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,5,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,7,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,9,2)"/>
 									  </xsl:when>
 									  <xsl:otherwise>
 										<xsl:value-of select="entry/fields/field_phone/data"/>
@@ -204,7 +204,7 @@
 								<xsl:if test="string-length(entry/fields/field_fax/data) &gt; 0">
 									
 									<div itemprop="faxNumber" class="spField">
-										<strong><xsl:value-of select="entry/fields/field_fax/label" />: </strong>
+										<i class="icon-inbox"></i> 
 										<xsl:value-of select="entry/fields/field_fax/data"/>
 										<xsl:text> </xsl:text>
 										<xsl:value-of select="entry/fields/field_fax/@suffix"/>
@@ -213,7 +213,7 @@
 								<xsl:if test="string-length(entry/fields/field_mobile/data) &gt; 0">
 								
 								<div class="spField">
-									<strong><xsl:value-of select="entry/fields/field_mobile/label" />: </strong>
+									<i class="icon-mobile-phone"></i> 
 									<xsl:value-of select="entry/fields/field_mobile/data"/>
 									<xsl:text> </xsl:text>
 									<xsl:value-of select="entry/fields/field_mobile/@suffix"/>
@@ -238,7 +238,7 @@
 							<xsl:if test="string-length(entry/fields/field_site_internet/data) &gt; 0">
 						  
 								<div class="spField" id="internet"> 
-									<strong><xsl:text>Site internet : </xsl:text></strong>
+									<i class="icon-plus"></i> 
 									<a>
 										<xsl:attribute name="href">
 										<xsl:value-of select="entry/fields/field_site_internet/data/a/@href" />
@@ -252,6 +252,19 @@
 								</div>
 						  
 							</xsl:if>
+							
+							<div id="send" class="block">
+								<a>
+									<xsl:attribute name="href">
+										<xsl:text>mailto:</xsl:text>
+										<xsl:text>?subject=</xsl:text>
+										<xsl:value-of select="entry/name" />
+										<xsl:text>&amp;body=</xsl:text>
+										<xsl:value-of select="entry/url" />
+									</xsl:attribute>
+									<i class="icon-envelope"></i> Envoyer cette fiche par mail
+								</a>
+							</div>
 							
 							<div id="print" class="hidden-phone">
 								<a href="#" onClick="window.print()"><i class="icon-print"></i> Imprimer cette fiche</a>

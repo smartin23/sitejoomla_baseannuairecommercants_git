@@ -15,9 +15,7 @@
         <xsl:apply-templates select="alphaMenu" />
       </div>
     <div style="clear:both;"/>
-	
-	<!--Recherche Autour de...-->
-			<xsl:value-of select="mjradius" disable-output-escaping="yes" />
+
 	
     <div id="SPSearchForm">
       <!-- define variable to check if there are more than 3 fields -->
@@ -46,10 +44,18 @@
                 <xsl:call-template name="FieldCell" />
               </xsl:if>
             </xsl:for-each>
+			
+			<!--Recherche Autour de...-->
+			<div style="clear:both;"/>
+			<div class="mjradiuswrapper">
+			
+					<xsl:value-of select="mjradius" disable-output-escaping="yes" />
+
+			</div>
+			<div style="clear:both;"/>
             
             <!-- on ajoute le filtre par catégories-->
-            <br/>
-			<div class="SPSearchCell">
+			<div class="SPSearchCell categoriefilter">
 				<div class="SPSearchLabel">
 					<strong><xsl:text>Filtrer par : </xsl:text></strong>
 				</div>

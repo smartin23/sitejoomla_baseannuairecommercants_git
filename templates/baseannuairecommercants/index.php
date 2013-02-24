@@ -84,7 +84,7 @@ $sitename = $app->getCfg('sitename');
 			
 			<div class="introduction row-fluid">
 				
-					<div class="introduction-titre span5">
+					<div class="introduction-titre span12">
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="page-header">
@@ -107,9 +107,7 @@ $sitename = $app->getCfg('sitename');
 						</div>
 						<?php } ?>
 					</div>
-					<div class="introduction-illustration span7">
-						<jdoc:include type="modules" name="image"/>
-					</div>
+					
 					
 			</div>	
 		</header>
@@ -396,7 +394,7 @@ function changeStackingOrder() {
 	if (jQuery(window).width() <= 600){
 	
 		//On déplace le breadcrumb
-		jQuery(".breadcrumb").insertAfter(jQuery(".introduction"));
+		jQuery(".centre").insertAfter(jQuery(".breadcrumb"));
 	
 		if (jQuery(".SPListing").length>0) {
 			jQuery(".categories").insertAfter(jQuery(".SPListing"));
@@ -409,6 +407,7 @@ function changeStackingOrder() {
 		}
 		
 		jQuery(".calendar").insertBefore(jQuery(".news"));
+		jQuery(".derniersinscrits").insertAfter(jQuery(".news"));
 		
 		//Sidebar1 n'est plus utilisé
 		jQuery('.sidebar1').hide();
@@ -418,7 +417,7 @@ function changeStackingOrder() {
 		//Sidebar1 est utilisé
 		jQuery('.sidebar1').show();
 		
-		jQuery(".breadcrumb").insertBefore(jQuery("#system-message-container"));
+		jQuery(".contenu").prepend(jQuery(".breadcrumb"));
 		
 		if (jQuery('.categories').length>0) {
 			if (jQuery('.mod-88').length>0) jQuery(".categories").insertAfter(jQuery(".mod-88"));
@@ -426,7 +425,8 @@ function changeStackingOrder() {
 			else if (jQuery('.sidebar1').length>0) jQuery(".sidebar1").prepend(jQuery(".categories"));
 		}
 		
-		jQuery(".calendar").insertBefore(jQuery(".promotion1"));
+		jQuery(".sidebar1").prepend(jQuery(".calendar"));
+		jQuery(".derniersinscrits").insertAfter(jQuery(".calendar"));
 	}
 }
 
@@ -457,7 +457,8 @@ jQuery(window).load(function(){
 		//Les news rss + news defile : affichés qu'en page d'acceuil
 		if (jQuery('.task-section-view').length >0) {
 			jQuery('.calendar').show();
-			jQuery('.news').show();		
+			jQuery('.news').show();	
+			jQuery('.derniersinscrits').show();		
 		}
 		else
 		{	

@@ -16,12 +16,16 @@
  * $Author: Sigrid Suski $
  * File location: components/com_sobipro/usr/templates/default/css/search.css $
  */
-
+ 
+ 
+#SPExtSearch .mjradiuswrapper {margin-top:30px;float:left;width:96%;background-color:#eee;padding:1%;border-radius:10px;}
+button#mj_rs_cutom {margin-bottom:10px;}
+#SPExtSearch .mjradius, #SPExtSearch .categoriefilter {}
+#SPExtSearch .mjradius  .SPSearchLabel {clear:left;}
+ 
 div#SPSearchForm {
-	margin: 2px;
-	padding: 5px;
+margin-top:20px;
 }
-
 #SPSearchForm label {display:inline;}
 #SPSearchForm div.SPSearchLabel{width:auto; margin-right:2%;}
 #SPSearchForm  > .SPSearchCell:first-child > .SPSearchLabel {display:none;}

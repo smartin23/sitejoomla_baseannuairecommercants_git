@@ -70,30 +70,6 @@ div.spEntriesListContainer {
 	height: 100%;
 }
 
-div.spEntriesListCell {
-	/*margin: 2px 0 0 3px;
-	padding: 10px;*/
-	padding:1%;
-	margin-right:2%;
-    border: solid #FFFFFF;
-	border-width: 5px 0px 0px 0px;
-	float: left;
-	position: relative;
-	background-color: #FBFBFB;
-}
-
-span.spEntriesListTitle {
-	font-size: 20px;
-	margin-bottom: 10px;
-	margin-top: 5px;
-	display: block;
-	font-weight: bold;
-	border: solid #CCCCCC;
-	padding-bottom: 8px;
-	padding-left: 3px;
-	border-width: 0px 0px 1px 0px;
-}
-
 div.spEntriesListRow {
 	clear:both;
 	margin-top: 1px;
