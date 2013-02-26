@@ -11,7 +11,7 @@
 						  <xsl:value-of select="url" />
 						</xsl:attribute>
 										
-						<xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
+						<xsl:if test="string-length(fields/field_logo/data/@thumbnail) &gt; 0">
 								<div id="logo" class="SPField pull-left">							
 									<xsl:element name="img">
 									  <xsl:attribute name="src">

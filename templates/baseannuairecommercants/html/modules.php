@@ -67,7 +67,7 @@ defined('_JEXEC') or die;
 	if (!empty ($module->content)) { ?>
 		<div class="module <?php echo $moduleClassSfx; echo $moduleUniqueClass; echo $modulePos?>">
 		<?php if ($module->showtitle) { ?> <h<?php echo $headerLevel; ?>>
-		<i class="icon-<?php echo $moduleClassSfxList[0]; ?> icon-large"></i>&nbsp;
+		
 		<?php echo $module->title; ?></h<?php echo $headerLevel; ?>>
 	<?php }; ?> <?php echo $module->content; ?></div>
 	<?php };

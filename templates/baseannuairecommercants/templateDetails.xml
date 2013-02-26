@@ -22,6 +22,7 @@
   </files>
   
   <positions>
+	<position>header</position>
 	<position>main</position>
 	<position>center</position>
 	<position>search</position>
@@ -38,6 +39,8 @@
 	<position>advertising</position>
 	<position>advertising1</position>
 	<position>advertising2</position>
+	<position>advertising3</position>
+	<position>advertising4</position>
     <position>syndicate</position>
 	<position>user1</position>
 	<position>user2</position>

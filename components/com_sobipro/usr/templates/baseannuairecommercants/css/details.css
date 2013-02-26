@@ -1,3 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.clear {
+  clear: both;
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+  margin: 0!important;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+p {
+  margin: 0 0 10px;
+}
+.whitebordered {
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
+}
+.notwhitebordered {
+  text-shadow: none;
+  filter: none;
+}
+.shadowed {
+  -moz-box-shadow: 2px 2px 3px #333;
+  -webkit-box-shadow: 2px 2px 3px #333;
+  box-shadow: 2px 2px 3px #333;
+}
+.top-shadowed {
+  -moz-box-shadow: 0px -3px 3px #333333;
+  -webkit-box-shadow: 0px -3px 3px #333333;
+  box-shadow: 0px -3px 3px #333333;
+}
+.bottom-shadowed {
+  -moz-box-shadow: 0px 3px 3px #333;
+  -webkit-box-shadow: 0px 3px 3px #333;
+  box-shadow: 0px 3px 3px #333;
+}
+.notshadowed {
+  box-shadow: none;
+}
+.rounded {
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.notrounded {
+  border-radius: 0px;
+}
 #all {
   max-width: none!important;
 }

@@ -84,12 +84,11 @@ $sitename = $app->getCfg('sitename');
 			
 			<div class="introduction row-fluid">
 				
-					<div class="introduction-titre span12">
+					<div class="introduction-titre span9">
 						<div class="row-fluid">
 							<div class="span12">
 								<div class="page-header">
-									<h1>Lorem ipsum dolor sit amet</h1>
-									<h2>Fusce ut nibh turpis, quis imperdiet elit</h2>
+									<jdoc:include type="modules" name="header"/>
 								</div>
 							</div>
 						</div>
@@ -106,9 +105,15 @@ $sitename = $app->getCfg('sitename');
 							</div>
 						</div>
 						<?php } ?>
+						
+						
+						
+					</div>
+					<div class="introduction-illustration span3">
+						<jdoc:include type="modules" name="image" />
 					</div>
 					
-					
+			
 			</div>	
 		</header>
 				
@@ -140,7 +145,11 @@ $sitename = $app->getCfg('sitename');
 						<div class="span6"><jdoc:include type="modules" name="advertising1"  /></div>
 						<div class="span6"><jdoc:include type="modules" name="advertising2"  /></div>
 					</div>
-								
+					<div class="publicites3 row-fluid">	
+						<div class="span6"><jdoc:include type="modules" name="advertising3"  /></div>
+						<div class="span6"><jdoc:include type="modules" name="advertising4"  /></div>
+					</div>
+													
 					<div class="news row-fluid">
 
 							<?php $counter=0; 
@@ -187,10 +196,12 @@ $sitename = $app->getCfg('sitename');
 				<div id="col3" class="span3 pull-right">
 					
 					<div class="publicites">
-						<jdoc:include type="modules" name="advertising1" style="standard"/>
-						<jdoc:include type="modules" name="advertising2" style="standard"/>					
+					<jdoc:include type="modules" name="advertising1" style="standard"/>
+					<jdoc:include type="modules" name="advertising2" style="standard"/>
+					<jdoc:include type="modules" name="advertising3" style="standard"/>
+					<jdoc:include type="modules" name="advertising4" style="standard"/>				
 					</div>
-					
+									
 					<div class="sidebar2">
 						<jdoc:include type="modules" name="right" style="standard"/>
 					</div>
@@ -378,23 +389,24 @@ function changeColumns() {
 		jQuery("#col3").removeClass("span3").hide();
 		//Les publicites passent en dessous
 		jQuery(".publicites2").show();
+		jQuery(".publicites3").show();
 	}
 	else
 	{
 		jQuery("#col2").removeClass("span9").addClass("span6");
 		jQuery("#col3").addClass("span3").show();
 		jQuery(".publicites2").hide();
-	}
-	
+		jQuery(".publicites3").hide();
+	}	
 }
 
 function changeStackingOrder() {
 
 	//on déplace les categories et les news (les cartes ne peuvent pas etre déplacées)
-	if (jQuery(window).width() <= 600){
+	if (jQuery(window).width() <= 768){
 	
 		//On déplace le breadcrumb
-		jQuery(".centre").insertAfter(jQuery(".breadcrumb"));
+		jQuery(".centre").prepend(jQuery(".breadcrumb"));
 	
 		if (jQuery(".SPListing").length>0) {
 			jQuery(".categories").insertAfter(jQuery(".SPListing"));
@@ -406,8 +418,8 @@ function changeStackingOrder() {
 			jQuery(".categories").insertAfter(jQuery(".contenu"));
 		}
 		
-		jQuery(".calendar").insertBefore(jQuery(".news"));
-		jQuery(".derniersinscrits").insertAfter(jQuery(".news"));
+		jQuery(".calendar").insertAfter(jQuery(".contenu"));
+		jQuery(".derniersinscrits").insertAfter(jQuery(".calendar"));
 		
 		//Sidebar1 n'est plus utilisé
 		jQuery('.sidebar1').hide();
