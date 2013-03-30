@@ -80,8 +80,8 @@
     <div style="clear:both;"/>
    
     <xsl:if test="message">
-      <div class="message">
-        <xsl:value-of select="message"/>
+      <div class="SPResultsCounter">
+        <h3><i class="icon-paper-clip icon-large"></i><xsl:text> </xsl:text><xsl:value-of select="message"/></h3>
       </div>
     </xsl:if>
 
@@ -95,7 +95,12 @@
   <div class="SPSearchCell">
     <xsl:if test="not( name() = 'top_button' )">
       <div class="SPSearchLabel">
-        <strong><xsl:value-of select="label" /><xsl:text>: </xsl:text></strong>
+	   <xsl:attribute name="id">
+            <xsl:value-of select="data/*/@id" />
+        </xsl:attribute>
+       
+				<strong><xsl:value-of select="label" /><xsl:text>: </xsl:text></strong>
+	
       </div>
     </xsl:if>
     <div class="SPSearchField">
@@ -112,7 +117,7 @@
     </div>
   </div>
   <xsl:if test="not( name() = 'searchbox' )">
-    <div style="clear:both; margin-bottom: 10px;"/>
+    <div style="clear:both; margin-bottom: 0px;"/>
   </xsl:if>
 </xsl:template>
 </xsl:stylesheet>

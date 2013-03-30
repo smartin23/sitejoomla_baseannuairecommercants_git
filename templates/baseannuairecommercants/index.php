@@ -7,6 +7,9 @@ $doc = JFactory::getDocument();
 $this->language = $doc->language;
 $this->direction = $doc->direction;
 
+// Get the user
+$user =& JFactory::getUser();
+
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
 $view     = $app->input->getCmd('view', '');
@@ -23,13 +26,13 @@ $sitename = $app->getCfg('sitename');
  
 	<meta charset="utf-8">
  
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 
    	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/min?g=generalcss">
 			
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.css" type="text/css" media="screen" />
-	<link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/fontface.css" type="text/css" media="screen" />
 		   
 	<!-- Le touch icons -->
 	<link rel="apple-touch-icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon.png">
@@ -40,8 +43,18 @@ $sitename = $app->getCfg('sitename');
 	<script type='text/javascript'>
 		jQuery.noConflict();
 	</script>
-
+	<!--[if IE 9]>
+	  <script src="/min/g=ielte9js"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	  <script src="/min/g=ielte8js"></script>
+	<![endif]-->
+	
+	
 	<jdoc:include type="head" />
+	
+	
+	
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -52,21 +65,23 @@ $sitename = $app->getCfg('sitename');
 
 <div class="topborder"></div>
 
-<div class="sheet container">
+<div class="background"><img src="<?php echo $this->baseurl ?>/images/deco/background.png"></div>
+
+<div class="sheet ">
+
 		<header>
 			<div class="header row-fluid">
 
 				<div class="navbar">	
 					<div class="container">
 								
-						<a class="brand" href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename'); ?></a>							
+						<a class="brand" href="<?php echo JURI::root(); ?>"><?php echo $app->getCfg('sitename'); ?></a>							
 						<a class="custombtn" data-toggle="collapse" data-target=".nav-collapse">
 						
 							<span id="bar1" class="custombar"></span>
 							<span id="bar2" class="custombar"></span>
 							<span id="bar3" class="custombar"></span>
-							<span id="bar4" class="custombar">
-								
+							<span id="bar4" class="custombar">						
 								<span class="first icon-bar"></span>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>	
@@ -83,37 +98,27 @@ $sitename = $app->getCfg('sitename');
 			</div>	
 			
 			<div class="introduction row-fluid">
-				
-					<div class="introduction-titre span9">
-						<div class="row-fluid">
-							<div class="span12">
+
+						<div class="introduction-titre ">
+						
 								<div class="page-header">
 									<jdoc:include type="modules" name="header"/>
 								</div>
-							</div>
+				
 						</div>
 						<?php if ( $this->countModules( 'search' )){ ?>
-						<div class="row-fluid">	
-							<div class="span12">
-								<div class="search-bloc row">						
-									<jdoc:include type="modules" name="search" style="standard"/>
-								</div>
-								
-								<div class="search2-bloc row">
-									<jdoc:include type="modules" name="search2" style="standard"/>
-								</div>
-							</div>
+						<div class="introduction-recherche">	
+						
+									<div class="search-bloc">						
+										<jdoc:include type="modules" name="search" style="standard"/>
+									</div>
+									
+									<div class="search2-bloc">
+										<jdoc:include type="modules" name="search2" style="standard"/>
+									</div>
+						
 						</div>
 						<?php } ?>
-						
-						
-						
-					</div>
-					<div class="introduction-illustration span3">
-						<jdoc:include type="modules" name="image" />
-					</div>
-					
-			
 			</div>	
 		</header>
 				
@@ -125,51 +130,45 @@ $sitename = $app->getCfg('sitename');
 							<jdoc:include type="modules" name="map1" style="standard" />
 						</div>
 					<?php } ?>
+					
 					<?php if ($task=='search.results') { ?>
 						<div class="mapgrip">
 							<jdoc:include type="modules" name="map2" style="standard" />
 						</div>
 					<?php } ?>
 
-					<div class="sidebar1">
-						<jdoc:include type="modules" name="left" style="standard" />
-					</div>
+					<?php if ( $this->countModules( 'left' )) { ?>
+						<div class="sidebar1">
+							<jdoc:include type="modules" name="left" style="standard" />
+						</div>
+					<?php } ?>
 				</div>
 			
 				<div id="col2" class="span6 middle">
 					<jdoc:include type="modules" name="breadcrumbs" />
 					
-					<div class="contenu" style="overflow:hidden; position:relative;"><jdoc:include type="component" /></div>
+					<div class="contenu lifted"><jdoc:include type="component" /></div>
+																	
+					<div class="liens1 row-fluid">
+
+						<?php $counter=0; 
+						if ( $this->countModules( 'bottom1-left' )) $counter++;
+						if ( $this->countModules( 'bottom1-right' )) $counter++;
+						if ($counter>0) {
+						?>
 				
-					<div class="publicites2 row-fluid">			
-						<div class="span6"><jdoc:include type="modules" name="advertising1"  /></div>
-						<div class="span6"><jdoc:include type="modules" name="advertising2"  /></div>
-					</div>
-					<div class="publicites3 row-fluid">	
-						<div class="span6"><jdoc:include type="modules" name="advertising3"  /></div>
-						<div class="span6"><jdoc:include type="modules" name="advertising4"  /></div>
-					</div>
-													
-					<div class="news row-fluid">
-
-							<?php $counter=0; 
-							if ( $this->countModules( 'bottom1-left' )) $counter++;
-							if ( $this->countModules( 'bottom1-right' )) $counter++;
-							if ($counter>0) {
-							?>
-					
-								<?php if ( $this->countModules( 'bottom1-left' )) { ?>
-								<div class="newsblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom1-left"  /></div>
-								<?php } ?>
-								
-								<?php if ( $this->countModules( 'bottom1-right' )) { ?>
-								<div class="newsblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom1-right"  /></div>
-								<?php } ?>
-							
+							<?php if ( $this->countModules( 'bottom1-left' )) { ?>
+							<div class="span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom1-left"  /></div>
 							<?php } ?>
+							
+							<?php if ( $this->countModules( 'bottom1-right' )) { ?>
+							<div class="span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom1-right"  /></div>
+							<?php } ?>
+						
+						<?php } ?>
 
 					</div>
-					<div class="liens row-fluid">
+					<div class="liens2 row-fluid">
 
 							<?php $counter=0; 
 							if ( $this->countModules( 'bottom2-left' )) $counter++;
@@ -178,11 +177,11 @@ $sitename = $app->getCfg('sitename');
 							?>
 
 								<?php if ( $this->countModules( 'bottom2-left' )) { ?>
-								<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2-left"  /></div>
+								<div class="span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2-left"  /></div>
 								<?php } ?>
 								
 								<?php if ( $this->countModules( 'bottom2-right' )) { ?>
-								<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2-right"  /></div>
+								<div class="span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2-right"  /></div>
 								<?php } ?>
 								
 							<?php } ?>
@@ -228,7 +227,7 @@ $sitename = $app->getCfg('sitename');
 			<div class="span12">
 				<div class="basdepage row-fluid">		
 
-						<div class="span4 menusecondaire">						
+						<div class="span4 menusecondaire <?php if ($user->id!=0) echo 'registered user_'.$user->id;?>">						
 							<jdoc:include type="modules" name="footer1" style="standardlite" />	
 						</div>
 						<div class="span4 newsletter">
@@ -250,12 +249,8 @@ $sitename = $app->getCfg('sitename');
 	</div>
 </footer>
 
-<!--[if lt IE 9]>
-  <script src="/min/g=ielte9js"></script>
-<![endif]-->
-<!--[if lt IE 8]>
-  <script src="/min/g=ielte8js"></script>
-<![endif]-->
+
+
 
 <script type='text/javascript'>
 	Modernizr.load([
@@ -297,7 +292,7 @@ jQuery.defer( "/scripts/jquery.tinyscrollbar.min.js" )
 	
 	//Carousel photos (description)
 	jQuery('.carousel').carousel({  
-	  interval: 8000 // autoplay à 8s
+	  interval: 10000 // autoplay à 8s
 	});
 
 	//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
@@ -364,46 +359,15 @@ function SPCSendMessage( form )
 </script>
 
 <script type="text/javascript">
-jQuery.extend({
-  getUrlVars: function(){
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-    return vars;
-  },
-  getUrlVar: function(name){
-    return jQuery.getUrlVars()[name];
-  }
-});
+
 
 function changeColumns() {
-
-	if (jQuery(window).width() < 980){
-		//On se separe de la colonne de gauche
-		jQuery("#col2").removeClass("span6").addClass("span9");
-		jQuery("#col3").removeClass("span3").hide();
-		//Les publicites passent en dessous
-		jQuery(".publicites2").show();
-		jQuery(".publicites3").show();
-	}
-	else
-	{
-		jQuery("#col2").removeClass("span9").addClass("span6");
-		jQuery("#col3").addClass("span3").show();
-		jQuery(".publicites2").hide();
-		jQuery(".publicites3").hide();
-	}	
 }
 
 function changeStackingOrder() {
 
 	//on déplace les categories et les news (les cartes ne peuvent pas etre déplacées)
-	if (jQuery(window).width() <= 768){
+	if (jQuery(window).width() < 768){
 	
 		//On déplace le breadcrumb
 		jQuery(".centre").prepend(jQuery(".breadcrumb"));
@@ -418,16 +382,21 @@ function changeStackingOrder() {
 			jQuery(".categories").insertAfter(jQuery(".contenu"));
 		}
 		
-		jQuery(".calendar").insertAfter(jQuery(".contenu"));
-		jQuery(".derniersinscrits").insertAfter(jQuery(".calendar"));
+		//jQuery(".gueret").insertAfter(jQuery(".contenu"));
+		jQuery(".evenement").insertAfter(jQuery(".contenu"));
+		jQuery(".actualites").insertAfter(jQuery(".evenement"));
+		jQuery(".agenda").insertAfter(jQuery(".actualites"));
+		jQuery(".derniersinscrits").insertAfter(jQuery(".agenda"));
 		
-		//Sidebar1 n'est plus utilisé
-		jQuery('.sidebar1').hide();
+		//Sidebar1 n'est plus utilisé, ainsi que toute la colonne 1
+		jQuery('#col1').hide();
+		jQuery('#col2').addClass("fullwidth");
 	}
 	else 
 	{
-		//Sidebar1 est utilisé
-		jQuery('.sidebar1').show();
+		//Sidebar1 est utilisé, ainsi que la colonne 1
+		jQuery('#col1').show();
+		jQuery('#col2').removeClass("fullwidth");
 		
 		jQuery(".contenu").prepend(jQuery(".breadcrumb"));
 		
@@ -437,8 +406,10 @@ function changeStackingOrder() {
 			else if (jQuery('.sidebar1').length>0) jQuery(".sidebar1").prepend(jQuery(".categories"));
 		}
 		
-		jQuery(".sidebar1").prepend(jQuery(".calendar"));
-		jQuery(".derniersinscrits").insertAfter(jQuery(".calendar"));
+		jQuery(".sidebar1").prepend(jQuery(".evenement"));
+		jQuery(".actualites").insertAfter(jQuery(".evenement"));
+		jQuery(".agenda").insertAfter(jQuery(".actualites"));
+		jQuery(".derniersinscrits").insertAfter(jQuery(".agenda"));
 	}
 }
 
@@ -455,7 +426,29 @@ function addBootstrapTags() {
 	}
 }
 
+function adaptBackground() {
+	var theWindow        = jQuery(window);
+	var bimg = jQuery(".background").find('img');
+	var aspectRatio = bimg.width() / bimg.height();
+	if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+		    bimg
+		    	.removeClass()
+		    	.addClass('bgheight');
+		} else {
+		    bimg
+		    	.removeClass()
+		    	.addClass('bgwidth');
+		}
+}
+
 jQuery(window).load(function(){ 
+	
+});
+
+jQuery(document).ready(function() {
+
+		//Full screen background
+		adaptBackground();
 
 		//Change la structure des colonnes selon la resolution
 		changeColumns();
@@ -465,12 +458,13 @@ jQuery(window).load(function(){
 		
 		//Ajout des tags Bootstrap (hors des templates et views modifiables)
 		addBootstrapTags();
-			
-		//Les news rss + news defile : affichés qu'en page d'acceuil
+		
+		//Les news rss + derniers inscrits + news defile : affichés qu'en page d'acceuil
 		if (jQuery('.task-section-view').length >0) {
-			jQuery('.calendar').show();
-			jQuery('.news').show();	
-			jQuery('.derniersinscrits').show();		
+			jQuery('.actualites').show();
+			jQuery('.agenda').show();
+			jQuery('.derniersinscrits').show();	
+			jQuery('.evenement').show();
 		}
 		else
 		{	
@@ -482,15 +476,7 @@ jQuery(window).load(function(){
 		$catgroup = jQuery('.categories').find('a.active').parents('.accordion-group');
 		$catgroup.find('a.accordion-toggle').removeClass('collapsed');
 		$catgroup.find('.accordion-body').addClass('in');	
-		
-		//Page Recherche : on active le mode Critere + si necessaire
-		var searchsource = jQuery.getUrlVar('searchsource');
-		if (searchsource=='plus') {
-			if (jQuery('.button#SPExOptBt').length>0) {
-				jQuery('#SPExtSearch').show();
-			}
-		}
-		
+			
 		//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
 		jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
 		
@@ -534,14 +520,24 @@ jQuery(window).load(function(){
 
 jQuery(window).resize(function () {
 
-	//On pousse le contenu sous le header fixe
-	//jQuery("body").css("padding-top", jQuery(".header").height());
+	adaptBackground();
 
 	changeStackingOrder();
 	
 	changeColumns();
 	
 });
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+
+	adaptBackground();
+
+	changeStackingOrder();
+	
+	changeColumns();
+  
+}, false);
 </script>
 
 </body> 

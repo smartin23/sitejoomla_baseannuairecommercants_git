@@ -7,19 +7,19 @@
 		</xsl:variable>
 		<div class="spCatListIcon">
 			<xsl:if test="string-length( icon )">
-				<a href="{$url}">
+				
 					<img alt="icon" class="spCatListIcon">
 						<xsl:attribute name="src">
 							<xsl:value-of select="icon" />
 						</xsl:attribute>
 					</img>
-				</a>
+
 			</xsl:if>
 		</div>
 		<div class="spCatsListTitle">
-			<a href="{$url}">
+	
 				<xsl:value-of select="name" />
-			</a>
+
 		</div>
 		<div class="spCatsListIntrotext">
 			<xsl:value-of select="introtext" disable-output-escaping="yes" />

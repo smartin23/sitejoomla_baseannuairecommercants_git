@@ -26,11 +26,6 @@
 //CSS general
 @import "../../../../../../templates/baseannuairecommercants/css/general.less";
  
-#SPExtSearch .mjradiuswrapper {margin-top:30px;float:left;width:96%;background-color:@boxColor;padding:1%;border-radius:10px;}
-button#mj_rs_cutom {margin-bottom:10px;}
-#SPExtSearch .mjradius, #SPExtSearch .categoriefilter {}
-#SPExtSearch .mjradius  .SPSearchLabel {clear:left;}
- 
 div#SPSearchForm {
 margin-top:20px;
 }
@@ -78,3 +73,19 @@ div.SPSearchSelectRangeTo {
 div.SPSearchField {
 	float: left;
 }
+
+div.SPResultsCounter {
+	border-top:1px solid @lightBorderColor;
+	margin-top:20px;
+}
+
+//Recherche etendue
+#SPExtSearch  { margin-top:20px;}
+ 
+#SPExtSearch .mjradiuswrapper {margin-top:20px;float:left;width:96%;background-color:@boxColor;padding:1%;border-radius:10px;}
+button#mj_rs_cutom {margin-bottom:10px;}
+#SPExtSearch .mjradius, #SPExtSearch .categoriefilter {}
+#SPExtSearch .mjradius  .SPSearchLabel {clear:left;}
+
+//Cas partuculiers
+#SPExtSearch #field_conditions_de_publication {display:none;}

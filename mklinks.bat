@@ -20,6 +20,11 @@ pause
 MKLINK /D usr D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\components\com_sobipro\usr
 pause
 
+cd \wamp21e\www\sitejoomla_baseannuairecommercants\media\sobipro\icons
+rmdir custom
+MKLINK /D custom D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\media\sobipro\icons\custom
+pause
+
 cd \wamp21e\www\sitejoomla_baseannuairecommercants\modules
 rmdir mod_jmaps
 MKLINK /D mod_jmaps D:\wamp21e\www\sitejoomla_baseannuairecommercants_git\modules\mod_jmaps

@@ -13,11 +13,13 @@
 }
 
 //General
-ul {list-style-type: none; margin:0!important;}
-a {text-decoration:none;}
-a:hover {text-decoration:none; }
+ul {list-style-type: none;}
+a {text-decoration:none;color:lighten(@textColor,10%);}
+a:hover {text-decoration:none; color:lighten(@textColor,20%);}
 
 p {margin:0 0 10px;}
+
+.fullwidth {width:100%!important;margin-left:0;}
 
 .whitebordered {
 text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
@@ -34,18 +36,21 @@ filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<
 -moz-box-shadow: 2px 2px 3px #333;
 -webkit-box-shadow: 2px 2px 3px #333;
 box-shadow: 2px 2px 3px #333;
+behavior: url(/PIE.php);
 }
 
 .top-shadowed {
 -moz-box-shadow: 0px -3px 3px #333;
 -webkit-box-shadow: 0px -3px 3px #333;
 box-shadow: 0px -3px 3px #333;
+behavior: url(/PIE.php);
 }
 
 .bottom-shadowed {
--moz-box-shadow: 0px 3px 3px #333;
--webkit-box-shadow: 0px 3px 3px #333;
-box-shadow: 0px 3px 3px #333;
+-moz-box-shadow: 0px 1px 2px #333;
+-webkit-box-shadow: 0px 1px 2px #333;
+box-shadow: 0px 1px 2px #333;
+behavior: url(/PIE.php);
 }
 
 .notshadowed {
@@ -53,10 +58,44 @@ box-shadow: 0px 3px 3px #333;
 }
 
 .rounded {
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	behavior: url(/PIE.php);
 }
 
 .notrounded {
 	border-radius:0px;
+}
+
+
+.lifted:before, .lifted:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	-ms-transform: skew(-3deg,-2deg);
+	-webkit-transform: skew(-3deg,-2deg); /* Safari and Chrome */
+	-o-transform: skew(-3deg,-2deg); /* Opera */
+	-moz-transform: skew(-3deg,-2deg); /* Firefox */
+	bottom: 14px;
+	box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+	height: 50px;
+	left: 5px;
+	max-width: 50%;
+	width: 50%;
+	behavior: url(/PIE.php);
+}
+.lifted:after {
+
+	-ms-transform: skew(3deg,2deg); /* IE 9 */
+	-webkit-transform: skew(3deg,2deg); /* Safari and Chrome */
+	-o-transform: skew(3deg,2deg); /* Opera */
+	-moz-transform: skew(3deg,2deg); /* Firefox */
+	left: auto;
+	right: 5px;
+	behavior: url(/PIE.php);
+}
+
+.lifted {
+	position:relative;
 }

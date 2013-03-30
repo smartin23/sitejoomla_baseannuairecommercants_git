@@ -17,6 +17,27 @@
  * File location: components/com_sobipro/usr/templates/default/js/search.js $
  */
 try{ jQuery.noConflict(); } catch( e ) {}
+
+jQuery.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return jQuery.getUrlVars()[name];
+  }
+});
+
+
+
+
 jQuery( document ).ready( function() {
 	spSearchDefStr = jQuery( '#SPSearchBox' ).val();
 	jQuery( '#SPSearchBox' ).bind( 'click', function() {
@@ -30,9 +51,24 @@ jQuery( document ).ready( function() {
 		};*/
 	} );
 	try {
-		jQuery( '#SPExtSearch' ).slideToggle( 'fast' );
+		//jQuery( '#SPExtSearch' ).slideToggle( 'fast' );
 		jQuery( '#SPExOptBt' ).bind( 'click', function() {
 			jQuery( '#SPExtSearch' ).slideToggle( 'fast' );
 		} );
 	} catch( e ) {}
+	
+	//Page Recherche : on active le mode Critere + si necessaire (formulaire déroulé)
+	var searchsource = jQuery.getUrlVar('searchsource');
+	if (searchsource!='plus') {
+		
+		jQuery( '#SPExtSearch' ).slideToggle( 'fast' );
+	}
+		
+	//Page Recheche : une copie du bouton de recherche en bas de l'extendded search
+	jQuery("#top_button").clone().appendTo('#SPExtSearch');
+	
+	//Et en attendantmieux (ordre d'appels de app ?) : on coche le champs Publication pendant un an caché en css
+	var dpub = jQuery('#field_conditions_de_publication'); 
+	dpub.find(".SPSearchChbx").attr('checked', true);
+	
 } );

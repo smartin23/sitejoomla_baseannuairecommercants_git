@@ -4,24 +4,28 @@
 <xsl:output method="xml" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" encoding="UTF-8"/>
 
   <xsl:template name="vcard">
-    <span class="spEntriesListTitle">
-      <a>
-        <xsl:attribute name="href">
-          <xsl:value-of select="url" />
-        </xsl:attribute>
-      
-        <xsl:choose>
-          <xsl:when test="string-length(name) &gt; 0">
-            <xsl:value-of select="name" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="fields/field_name/data" />
-          </xsl:otherwise>
-        </xsl:choose>
+  
 
-      </a>
-    </span>
+	<div class="spEntriesListBody">
+	<span class="spEntriesListTitle">
+		  <a>
+			<xsl:attribute name="href">
+			  <xsl:value-of select="url" />
+			</xsl:attribute>
+		  
+			<xsl:choose>
+			  <xsl:when test="string-length(name) &gt; 0">
+				<xsl:value-of select="name" />
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:value-of select="fields/field_name/data" />
+			  </xsl:otherwise>
+			</xsl:choose>
 
+		  </a>
+	</span>
+	
+	<div style="clear:both;"/>
     <xsl:for-each select="fields/*">
       <div>
         <xsl:attribute name="class">
@@ -51,9 +55,14 @@
             <xsl:value-of select="@suffix"/>
           </xsl:if>
         </xsl:if>
-      </div>
+		</div>
     </xsl:for-each>
     <div style="clear:both;"/>
-  <xsl:call-template name="ratingStars"/>
+	<xsl:call-template name="ratingStars"/>
+	<div class="spEntriesListLocalization">
+			<div class="spEntryDistance spField" id="distance" ><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
+	</div>
+	</div>
+   
   </xsl:template>
 </xsl:stylesheet>

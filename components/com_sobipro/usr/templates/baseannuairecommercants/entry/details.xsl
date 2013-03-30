@@ -19,12 +19,12 @@
 	
 	<div class="SPDetailEntry">
 
-		<div style="float:left;"><xsl:call-template name="manage" /></div>
-		<div style="float:right;"><xsl:call-template name="ratingStars"/></div>
+		<div class="SPEntryManage"><xsl:call-template name="manage" /></div>
+		<div class="SPEntryRating"><xsl:call-template name="ratingStars"/></div>
 		
 		<div style="clear:both;"/>
 		
-		<h1 class="SPTitle"><xsl:value-of select="entry/name" /></h1>
+		<h3 class="SPTitle"><xsl:value-of select="entry/name" /></h3>
 		<div class="spField" id="title">
 		  <xsl:value-of select="entry/fields/field_title/data"/>
 		  <xsl:text> </xsl:text>
@@ -67,6 +67,8 @@
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="entry/fields/field_activite_detaillee/@suffix"/>
 					</div>
+					
+					<div style="clear:both;"/>
 	 
 					<div class="SPDE-Galery">
 						<div id="spdecarousel" class="carousel slide">
@@ -90,6 +92,8 @@
 							</div>
 						</div>
 					</div>
+					
+					<div style="clear:both;"/>
 					
 					<div class="SPDE-Links">	 
 						<strong>Suivez-nous sur : </strong><br/>
@@ -191,7 +195,7 @@
 							
 							<div class="SPDetailEntry-Sidebar-telephone">
 								<xsl:if test="string-length(entry/fields/field_phone/data) &gt; 0">     
-									<i class="icon-phone"></i> 
+									<i class="icon-phone"></i><xsl:text>  </xsl:text>
 									<xsl:choose>
 									  <xsl:when test="string-length(entry/fields/field_phone/data) = 10">
 										<xsl:value-of select="substring(entry/fields/field_phone/data,1,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,3,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,5,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,7,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_phone/data,9,2)"/>
@@ -204,19 +208,29 @@
 								<xsl:if test="string-length(entry/fields/field_fax/data) &gt; 0">
 									
 									<div itemprop="faxNumber" class="spField">
-										<i class="icon-inbox"></i> 
+										<i class="icon-inbox"></i><xsl:text>  </xsl:text>
+									<xsl:choose>
+									  <xsl:when test="string-length(entry/fields/field_fax/data) = 10">
+										<xsl:value-of select="substring(entry/fields/field_fax/data,1,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_fax/data,3,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_fax/data,5,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_fax/data,7,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_fax/data,9,2)"/>
+									  </xsl:when>
+									  <xsl:otherwise>
 										<xsl:value-of select="entry/fields/field_fax/data"/>
-										<xsl:text> </xsl:text>
-										<xsl:value-of select="entry/fields/field_fax/@suffix"/>
+									  </xsl:otherwise>
+									</xsl:choose>
 									</div>
 								</xsl:if>
 								<xsl:if test="string-length(entry/fields/field_mobile/data) &gt; 0">
 								
 								<div class="spField">
-									<i class="icon-mobile-phone"></i> 
-									<xsl:value-of select="entry/fields/field_mobile/data"/>
-									<xsl:text> </xsl:text>
-									<xsl:value-of select="entry/fields/field_mobile/@suffix"/>
+									<i class="icon-mobile-phone"></i><xsl:text>  </xsl:text>
+									<xsl:choose>
+									  <xsl:when test="string-length(entry/fields/field_phone/data) = 10">
+										<xsl:value-of select="substring(entry/fields/field_mobile/data,1,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_mobile/data,3,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_mobile/data,5,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_mobile/data,7,2)"/> <xsl:text>  </xsl:text><xsl:value-of select="substring(entry/fields/field_mobile/data,9,2)"/>
+									  </xsl:when>
+									  <xsl:otherwise>
+										<xsl:value-of select="entry/fields/field_phone/data"/>
+									  </xsl:otherwise>
+									</xsl:choose>	
 								</div>
 								</xsl:if>
 							</div>							

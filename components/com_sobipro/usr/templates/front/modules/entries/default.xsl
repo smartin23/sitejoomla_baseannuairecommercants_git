@@ -11,7 +11,7 @@
 						  <xsl:value-of select="url" />
 						</xsl:attribute>
 										
-						<xsl:if test="string-length(fields/field_logo/data/@thumbnail) &gt; 0">
+							<xsl:if test="string-length(fields/field_logo/data/@thumbnail) &gt; 0">
 								<div id="logo" class="SPField pull-left">							
 									<xsl:element name="img">
 									  <xsl:attribute name="src">
@@ -47,7 +47,12 @@
 						<xsl:if test="count(categories)">	
 							<ul>
 							<xsl:for-each select="categories/category">
-							  <li><xsl:value-of select="." /></li>		  
+							  <li><a>
+								<xsl:attribute name="href">
+								  <xsl:value-of select="@url" />
+								</xsl:attribute>
+								<xsl:value-of select="." /></a>
+							  </li>		  
 							</xsl:for-each>		
 							</ul>
 						</xsl:if>

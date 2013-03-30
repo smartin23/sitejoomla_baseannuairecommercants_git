@@ -12,16 +12,21 @@
 }
 ul {
   list-style-type: none;
-  margin: 0!important;
 }
 a {
   text-decoration: none;
+  color: #8b614e;
 }
 a:hover {
   text-decoration: none;
+  color: #a87964;
 }
 p {
   margin: 0 0 10px;
+}
+.fullwidth {
+  width: 100%!important;
+  margin-left: 0;
 }
 .whitebordered {
   text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
@@ -37,26 +42,73 @@ p {
   -moz-box-shadow: 2px 2px 3px #333;
   -webkit-box-shadow: 2px 2px 3px #333;
   box-shadow: 2px 2px 3px #333;
+  behavior: url(/PIE.php);
 }
 .top-shadowed {
   -moz-box-shadow: 0px -3px 3px #333333;
   -webkit-box-shadow: 0px -3px 3px #333333;
   box-shadow: 0px -3px 3px #333333;
+  behavior: url(/PIE.php);
 }
 .bottom-shadowed {
-  -moz-box-shadow: 0px 3px 3px #333;
-  -webkit-box-shadow: 0px 3px 3px #333;
-  box-shadow: 0px 3px 3px #333;
+  -moz-box-shadow: 0px 1px 2px #333;
+  -webkit-box-shadow: 0px 1px 2px #333;
+  box-shadow: 0px 1px 2px #333;
+  behavior: url(/PIE.php);
 }
 .notshadowed {
   box-shadow: none;
 }
 .rounded {
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  behavior: url(/PIE.php);
 }
 .notrounded {
   border-radius: 0px;
+}
+.lifted:before,
+.lifted:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -ms-transform: skew(-3deg, -2deg);
+  -webkit-transform: skew(-3deg, -2deg);
+  /* Safari and Chrome */
+
+  -o-transform: skew(-3deg, -2deg);
+  /* Opera */
+
+  -moz-transform: skew(-3deg, -2deg);
+  /* Firefox */
+
+  bottom: 14px;
+  box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+  height: 50px;
+  left: 5px;
+  max-width: 50%;
+  width: 50%;
+  behavior: url(/PIE.php);
+}
+.lifted:after {
+  -ms-transform: skew(3deg, 2deg);
+  /* IE 9 */
+
+  -webkit-transform: skew(3deg, 2deg);
+  /* Safari and Chrome */
+
+  -o-transform: skew(3deg, 2deg);
+  /* Opera */
+
+  -moz-transform: skew(3deg, 2deg);
+  /* Firefox */
+
+  left: auto;
+  right: 5px;
+  behavior: url(/PIE.php);
+}
+.lifted {
+  position: relative;
 }
 #all {
   max-width: none!important;
@@ -67,6 +119,13 @@ p {
 .SPDetails #resume_activite {
   font-weight: bold;
   margin-bottom: 20px;
+}
+.SPDetails .SPEntryManage {
+  float: left;
+  width: 50%;
+}
+.SPDetails .SPEntryRating {
+  float: right;
 }
 .SPDetails .spEntryEditLink {
   padding-right: 2%;
@@ -91,7 +150,8 @@ p {
   font-weight: bold;
   margin-bottom: 5px;
 }
-.SPDetailEntry-Sidebar-infos #print {
+.SPDetailEntry-Sidebar-infos #print,
+.SPDetailEntry-Sidebar-infos #send {
   margin-top: 15px;
 }
 .SPDE-Logo img {
@@ -201,6 +261,7 @@ p {
 .tabbable.responsive .nav-tabs > .active > a,
 .tabbable.responsive .nav-tabs > .active > a:hover {
   color: #6a4a3c !important;
+  background: none!important;
 }
 @media (max-width: 1200px) {
   body {
@@ -266,11 +327,7 @@ p {
   
 }
 @media screen and (min-width: 480px) and (max-width: 768px) {
-  .publicite {
-    float: left;
-    width: 48%;
-    margin: 1%;
-  }
+  
 }
 @media screen and (max-width: 480px), screen and (min-width: 768px) and (max-width: 980px) {
   .SPDE-Logo {

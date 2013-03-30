@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'matizregular';
+  src: url('fonts/matiz/matiz-webfont.eot');
+  src: url('fonts/matiz/matiz-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/matiz/matiz-webfont.woff') format('woff'), url('fonts/matiz/matiz-webfont.ttf') format('truetype'), url('fonts/matiz/matiz-webfont.svg#matizregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

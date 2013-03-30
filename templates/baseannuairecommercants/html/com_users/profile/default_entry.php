@@ -33,6 +33,7 @@ $rows = $db->loadRowList();
 $nbrows = count($rows) ;
 
 ?>
+
 <fieldset id="users-profile-sobipro" class="users-profile-sobipro-<?php echo $group;?>">
 	<legend>
 	<?php if ($nbrows <= 1) 	
@@ -65,6 +66,6 @@ if ($nbrows > 0) :?>
 	<?php endif;?>	
 	</div>
 	
-	<p><a href="index.php?option=com_sobipro&task=entry.add&sid=55"><button class="btn"><?php echo JText::_('COM_USERS_SOBIPRO_NEW_ENTRY');?></button></a></p>	
+	<!--<p><a href="index.php?option=com_sobipro&task=entry.add&sid=55"><button class="btn"><php echo JText::_('COM_USERS_SOBIPRO_NEW_ENTRY');?></button></a></p>-->
 	
 </fieldset>
